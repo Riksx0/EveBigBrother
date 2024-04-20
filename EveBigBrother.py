@@ -4,7 +4,6 @@ from PIL import ImageGrab, Image, ImageChops
 import numpy
 import threading
 import time
-import pygetwindow
 import mss
 import requests
 from io import BytesIO
@@ -111,21 +110,31 @@ class RegionNameDialog(tk.Toplevel):
         self.entry_region_name = ttk.Entry(self)
         self.entry_region_name.pack()
 
+        self.lbl_delay = ttk.Label(self, text="Enter Delay (in seconds):")
+        self.lbl_delay.pack(pady=5)
+        self.entry_delay = ttk.Entry(self)
+        self.entry_delay.pack()
+
         self.btn_ok = ttk.Button(self, text="OK", command=self.save_region_name)
         self.btn_ok.pack(pady=5)
         self.window = self
 
     def save_region_name(self):
         region_name = self.entry_region_name.get()
-        if region_name:
-            self.master.add_region(self.region, region_name)
-            self.destroy()
-        else:
-            messagebox.showerror("Error", "Region name cannot be empty.")
+        delay = self.entry_delay.get()
+        try:
+            delay = float(delay)
+            if region_name:
+                self.master.add_region(self.region, region_name, delay)
+                self.destroy()
+            else:
+                messagebox.showerror("Error", "Region name cannot be empty.")
+        except ValueError:
+            messagebox.showerror("Error", "Please enter a valid delay (in seconds).")
 
 
 class MonitoreoRegion:
-    def __init__(self, master, region, webhook_url, app, region_names):
+    def __init__(self, master, region, webhook_url, app, region_names, delay):
         self.master = master
         self.region = region
         self.app = app
@@ -134,6 +143,7 @@ class MonitoreoRegion:
         self.imagen_inicial = None
         self.nombre_archivo_imagen_inicial = f"imagen_inicial_{id(self)}.png"
         self.webhook_url = webhook_url
+        self.delay = delay
 
         self.frame = ttk.Frame(self.master)
 
@@ -199,7 +209,7 @@ class MonitoreoRegion:
                     self.imagen_inicial = screenshot
                 else:
                     print("Las imágenes son iguales. No se enviará captura de pantalla a Discord.")
-                time.sleep(1)
+                time.sleep(self.delay)
 
     def enviar_a_discord(self, imagen):
         try:
@@ -298,10 +308,10 @@ class App(tk.Tk):
         self.screen_width = self.winfo_screenwidth()
         self.screen_height = self.winfo_screenheight()
         self.webhook_url = ''  
-        # send me a dm if there is any issue
+
         self.lbl_watermark = ttk.Label(self, text="GitHub: Riksx0 | Discord: riksx")
         self.lbl_watermark.pack(side=tk.BOTTOM, pady=5)
-        # follow me on github :D
+
     def open_config(self):
         dialog = ConfigDialog(self)
         dialog.transient(self)
@@ -312,15 +322,15 @@ class App(tk.Tk):
         self.screen_height = height
         self.webhook_url = webhook_url
 
-    def add_region_tab(self, region, name):
-        frame = MonitoreoRegion(self.notebook, region, self.webhook_url, self, self.region_names)
+    def add_region_tab(self, region, name, delay):
+        frame = MonitoreoRegion(self.notebook, region, self.webhook_url, self, self.region_names, delay)
         self.notebook.add(frame.frame, text=name)
 
-    def add_region(self, region, name):
+    def add_region(self, region, name, delay):
         if name:
             self.region_names[region] = name
             print("Region names dictionary after adding new region:", self.region_names)
-            self.add_region_tab(region, name)
+            self.add_region_tab(region, name, delay)
         else:
             messagebox.showerror("Error", "Region name cannot be empty.")
 
@@ -338,4 +348,9 @@ class App(tk.Tk):
 
 if __name__ == "__main__":
     app = App()
-app.mainloop()
+    app.mainloop()
+
+
+
+
+# VERSION 1.0.1
