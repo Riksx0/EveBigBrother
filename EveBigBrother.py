@@ -101,7 +101,7 @@ class RegionNameDialog(tk.Toplevel):
     def __init__(self, master, region):
         super().__init__(master)
         self.title("Region Name")
-        self.geometry("200x100")
+        self.geometry("300x300")
 
         self.region = region
 
@@ -256,7 +256,7 @@ class MonitoreoRegion:
         diferencia = ImageChops.difference(imagen1, imagen2)
         diferencia_array = numpy.array(diferencia)
         suma_diferencia = numpy.sum(diferencia_array)
-        umbral = 10000
+        umbral = 500000
         return suma_diferencia > umbral
 
 
@@ -353,4 +353,4 @@ if __name__ == "__main__":
 
 
 
-# VERSION 1.0.1
+# VERSION 1.0.3
