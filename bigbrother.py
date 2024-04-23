@@ -10,7 +10,54 @@ import requests
 import pytesseract
 from io import BytesIO
 import sys
+import os
+import subprocess
 
+#######################################################
+
+def check_for_updates(repo_owner, repo_name, current_version):
+    # Definir el nombre de usuario del propietario del repositorio y el nombre del repositorio
+    owner = repo_owner
+    repo = repo_name
+    # Ruta al archivo que contiene la versión actual de la aplicación
+    version_file = "version.txt"
+
+    # Endpoint de la API de GitHub para obtener la última versión de la aplicación
+    url = f"https://api.github.com/repos/Riksx0/EveBigBrother/releases/latest"
+
+    try:
+        # Realizar una solicitud GET a la API de GitHub
+        response = requests.get(url)
+        # Verificar si la solicitud fue exitosa
+        if response.status_code == 200:
+            # Obtener la información de la versión más reciente
+            latest_version = response.json()["tag_name"]
+            # Comparar la versión actual con la versión más reciente
+            if latest_version != current_version:
+                print("¡Hay una nueva versión disponible!")
+                # Descargar y actualizar la aplicación
+                download_and_update_app(owner, repo)
+            else:
+                print("La aplicación está actualizada.")
+        else:
+            print("Error al obtener la información de la versión:", response.status_code)
+    except Exception as e:
+        print("Error al verificar actualizaciones:", e)
+
+def download_and_update_app(owner, repo):
+    try:
+        # Descargar el archivo de la última versión desde GitHub
+        subprocess.run(["git", "clone", f"https://github.com/Riksx0/EveBigBrother.git", "temp_repo"])
+        # Mover los archivos relevantes de la nueva versión a la ubicación de la aplicación actual
+        subprocess.run(["cp", "-r", "temp_repo/*", "app_directory"])
+        print("¡La aplicación se ha actualizado correctamente!")
+    except Exception as e:
+        print("Error al descargar y actualizar la aplicación:", e)
+    finally:
+        # Eliminar el repositorio temporal
+        subprocess.run(["rm", "-rf", "temp_repo"])
+
+##################################################################3
 
 class ConsoleWindow(tk.Toplevel):
     def __init__(self, master):
@@ -337,6 +384,12 @@ class ChangeNameDialog(tk.Toplevel):
         else:
             messagebox.showerror("Error", "New name cannot be empty.")
 
+
+
+
+
+
+
 class App(tk.Tk):
     _aliados = ["CRB","PAND", "REAS", "DUNE", "GRA", "LEGN", "S3VG", "XAN", "RED1", "GONE", 
                 "KNEE", "UFCG", "HTP", "PYRT", "S2N", "NILF", "SUM", "SHIE", "CBWA", "B1G", 
@@ -358,6 +411,8 @@ class App(tk.Tk):
         self.title("EVE Big Brother")
         self.geometry("600x400")
         self.iconphoto(True, tk.PhotoImage(file="icon.png"))
+
+
 
         self.region_names = {}
 
@@ -429,5 +484,13 @@ class App(tk.Tk):
 if __name__ == "__main__":
     app = App()
     app.mainloop()
+#########################
+    repo_owner = "Riksx0"
+    repo_name = "EveBigBrother"
+    current_version = "2.5"
+    # Verificar si hay actualizaciones disponibles
+    check_for_updates(repo_owner, repo_name, current_version)
 
-# Version 2.3
+
+
+# Version 2.5
