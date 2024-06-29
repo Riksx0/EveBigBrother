@@ -1,24 +1,37 @@
-!!!!!!! HOW TO USE IT: !!!!!!!
+# How to Use the Program
 
+## Configure Your PC
 
-CONFIGURE your PC TO USE THE PROGRAM:
+1. **Install Tesseract-OCR**  
+   - Use the included `tesseract-ocr-w64-setup-5.3.3.20231005` installer.
+   - Copy the installation path (e.g., `C:\Program Files\Tesseract-OCR`).
 
-Install "tesseract-ocr-w64-setup-5.3.3.20231005" that the folder includes, INSTALL IT AND THEN COPY THEP PATH WHERE YOU INSTALLED IT (it should be something like "C:\Program Files\Tesseract-OCR"), once installed, go to "Edit the system enviroment variables" on your pc, (press Windows Key, then search edit system enviroment, you'll see it, it will open a System Properties window) then press "Enviroment variables..." at the bottom, press "Path" (there are 2 Path, one in user variables and another one in system Click the System one) and then  "Edit..." at the bottom, it will pop up a window where you'll press "New" and paste the path that you copied at the start (something like something like "C:\Program Files\Tesseract-OCR") click accept, accept, accept and follow the next instructions.
+2. **Set Environment Variables**  
+   - Open "Edit the system environment variables" (press Windows Key and search for it).
+   - In the System Properties window, click "Environment Variables..."
+   - Under "System variables," select "Path" and click "Edit..."
+   - Click "New" and paste the Tesseract installation path.
+   - Click "OK" to close all dialogs.
 
-CONFIGURE THE PROGRAM:
+## Configure the Program
 
-1. configure the devies.txt, for this you need the ADB port of the current emulator, this is something like 127.0.0.1:16480, so in this TXT you need to write the system of the emulator and the port, like this  "Jita 127.0.0.1:16480" if you dont know where to get the port contact me in discord.
+1. **Edit `devices.txt`**  
+   - Enter the ADB port of your emulator (e.g., `127.0.0.1:16480`).
+   - Format: `SystemName 127.0.0.1:16480` (e.g., `Jita 127.0.0.1:16480`).
+   - If you need help finding the port, contact me on Discord.
 
-2. configure the discord webhook, you need to create a webhook on the channel where you want to send the intel, just copy the webhook and paste it on the TXT.
+2. **Set Up Discord Webhook**  
+   - Create a webhook in the desired Discord channel.
+   - Copy the webhook URL and paste it into the appropriate TXT file.
 
-3. MAKE SURE YOU HAVE THE RIGHT RESOLUTION, set it to Mobile mode and 540x960.
+3. **Adjust Resolution**  
+   - Ensure your emulator is set to Mobile mode with a resolution of 540x960.
 
+## Start Using the Program
 
-START USING THE PROGRAM:
+1. Click "Start Monitoring" to begin.
+2. Click "Stop" to end all monitoring processes.
 
-1. click start monitoring to start
-2. click stop to stop all monitoring processes 
-
-For any question please DM riksx in discord. 
+For any questions, please DM riksx on Discord.
 
 Save your alliance and fly safe o7.
