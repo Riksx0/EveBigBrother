@@ -7,39 +7,17 @@ Install "tesseract-ocr-w64-setup-5.3.3.20231005" that the folder includes, INSTA
 
 CONFIGURE THE PROGRAM:
 
-1. Open the .exe
-2. Click Config
-3. put your Width and Height of your screen (if its 1920x1080 put 1920 on width and 1080 on height)
-4. create a webhook in discord on the channel where you want the intel to be sent (if you dont know how to create a webhook ask me in discord, i can help you)
-5. copy the webhook URL
-6. paste it on the webhook URL on config window
-7. once everything is done, click accept and follow next instructions.
+1. configure the devies.txt, for this you need the ADB port of the current emulator, this is something like 127.0.0.1:16480, so in this TXT you need to write the system of the emulator and the port, like this  "Jita 127.0.0.1:16480" if you dont know where to get the port contact me in discord.
+
+2. configure the discord webhook, you need to create a webhook on the channel where you want to send the intel, just copy the webhook and paste it on the TXT.
+
+3. MAKE SURE YOU HAVE THE RIGHT RESOLUTION, set it to Mobile mode and 540x960.
+
 
 START USING THE PROGRAM:
 
-1. add a region and put a random name.
-2. click start monitoring.
-3. click stop monitoring.
-4. delete the region.
-^^^^ THIS IS VERY IMPORTANT ^^^^
-
-5. add a new region and now put the correct name (usually the system where the camera is and the gate that is looking at, for example (SD- gate to JU-)
-6. click start monitoring.
---- if you want to stop it monitoring, then click stop.
-
-%%% IMPORTANT %%%
-
-BEFORE YOU DELETE A REGION YOU MUST STOP IT MONITORING, OTHERWISE IT WILL KEEP MONITORING AFTER ITS DELETED, ALSO STOP MONITORING ALL BEFORE YOU CLOSE THE PROGRAM (this will get fixed)
-
-%%% IMPORTANT %%%
-
-repeat step 4 for evey region (system) that want to be monitored.
-
------
-REMEMBER THAT THIS PROGRAM ONLY CHECK THE OVERVIEW CHANGES (at the moment) SO YOU NEED TO HAVE A SPECIAL OVERVIEW WHERE ONLY REDS/GREY APPEAR.
------
-!
------
+1. click start monitoring to start
+2. click stop to stop all monitoring processes 
 
 For any question please DM riksx in discord. 
 

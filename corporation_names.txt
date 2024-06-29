@@ -1,0 +1,10 @@
+"CRB","PAND", "REAS", "DUNE", "GRA", "LEGN", "S3VG", "XAN", "RED1", "GONE", 
+"KNEE", "UFCG", "HTP", "PYRT", "S2N", "NILF", "SUM", "SHIE", "CBWA", "B1G", 
+"SOAF", "SAKU", "FKG", "ORDN", "BKRN", "FLBR", "IQE", "UEE", "VHGS", "AMSH", 
+"BSF", "BGE", "SC2", "TLC", "REKE", "VIDA", "ODST", "ROOK", "REKI", "ODSF", 
+"ODIF", "AGS", "DN", "ASMR", "HMZ", "L1NF", "LGQ", "KLU", "P1BC", "PIBC", 
+"SYKY", "FVM", "AURY", "PER", "MM", "ROLL", "RED2", "VECT", "KP", "XCOM", 
+"L4D", "SJI", "BNI", "NIFI", "HOME", "2SUM", "NCR0", "A15P", "F00L", "OLDS", 
+"VIRI", "SHHC", "HOGS", "H0GS", "CC", "CBFS", "PJM", "CC", "SHLD", "HOGS",
+"TOGC", "GIST", "SMU", "DT13", "O0SF", "DOSF", "RAN", "8IG",
+"A1sP", "A15P", "VEE", "REDI", "H0ME", "HOME", "KNEE"
